@@ -1,0 +1,10 @@
+.root {
+    -fx-background-color:#e3e3e3 ;
+    -fx-font-size: 12;
+}
+.label{
+    /*-fx-text-fill: navy;*/
+}
+.menu-my{
+    -fx-text-fill: azure;
+}
