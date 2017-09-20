@@ -1,5 +1,9 @@
 package sample;
 
+import javafx.animation.KeyFrame;
+import javafx.animation.KeyValue;
+import javafx.animation.Timeline;
+import javafx.beans.property.DoubleProperty;
 import javafx.geometry.Insets;
 import javafx.geometry.Pos;
 import javafx.scene.Scene;
@@ -10,15 +14,16 @@ import javafx.scene.layout.HBox;
 import javafx.scene.text.Text;
 import javafx.stage.Modality;
 import javafx.stage.Stage;
+import javafx.util.Duration;
 
 public class CloseBox {
     private static boolean value;
 
     public static boolean display(String title, String message) {
-        Stage window = new Stage();
-        window.setTitle(title);
-        window.initModality(Modality.APPLICATION_MODAL);
-        window.setMinWidth(150);
+        Stage primaryStage = new Stage();
+        primaryStage.setTitle(title);
+        primaryStage.initModality(Modality.APPLICATION_MODAL);
+        primaryStage.setMinWidth(150);
 
         HBox hBox = new HBox();
         hBox.setAlignment(Pos.CENTER);
@@ -41,7 +46,7 @@ public class CloseBox {
         yesButton.setPrefSize(55, 25);
         yesButton.setOnAction(event -> {
             value = true;
-            window.close();
+            primaryStage.close();
         });
         GridPane.setConstraints(yesButton, 0, 1);
 
@@ -50,7 +55,7 @@ public class CloseBox {
         noButton.setPrefSize(65, 25);
         noButton.setOnAction(event -> {
             value = false;
-            window.close();
+            primaryStage.close();
         });
         GridPane.setConstraints(noButton, 1, 1);
 
@@ -64,10 +69,20 @@ public class CloseBox {
 //        Scene scene = new Scene(borderPane, 295, 93);
         Scene scene = new Scene(borderPane, 255, 93);
         scene.getStylesheets().add("sample/css/GUI.css");
-        window.setScene(scene);
-        window.setMaxWidth(275);
-        window.setMaxHeight(113);
-        window.showAndWait();
+
+
+        DoubleProperty opacity = borderPane.opacityProperty();
+        Timeline timeline = new Timeline(
+                new KeyFrame(Duration.ZERO, new KeyValue(opacity, 0.0)),
+                new KeyFrame(new Duration(1000), new KeyValue(opacity, 1.0))
+        );
+        timeline.play();
+
+
+        primaryStage.setScene(scene);
+        primaryStage.setMaxWidth(275);
+        primaryStage.setMaxHeight(113);
+        primaryStage.showAndWait();
         return value;
     }
 }
