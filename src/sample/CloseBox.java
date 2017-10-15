@@ -12,25 +12,25 @@ import javafx.scene.layout.BorderPane;
 import javafx.scene.layout.GridPane;
 import javafx.scene.layout.HBox;
 import javafx.scene.text.Text;
-import javafx.stage.Modality;
 import javafx.stage.Stage;
 import javafx.util.Duration;
 
 public class CloseBox {
     private static boolean value;
 
-    public static boolean display(String title, String message) {
-        Stage primaryStage = new Stage();
-        primaryStage.setTitle(title);
-        primaryStage.initModality(Modality.APPLICATION_MODAL);
-        primaryStage.setMinWidth(150);
+    public static boolean display(Stage primaryStage) {
+        Stage closeStage = new Stage();
+        closeStage.titleProperty().bind(I18N.createStringBinding("title.exit"));
+//        closeStage.initModality(Modality.APPLICATION_MODAL);
+        closeStage.setMinWidth(150);
 
         HBox hBox = new HBox();
         hBox.setAlignment(Pos.CENTER);
         hBox.setPadding(new Insets(10, 0, 0, 0));
 //        hBox.setStyle("-fx-background-color: #d2d2d2;");
 
-        Text text = new Text(message);
+        Text text = new Text();
+        text.textProperty().bind(I18N.createStringBinding("text.exit"));
         hBox.getChildren().addAll(text);
 
         GridPane gridPane = new GridPane();     //spacing - distance between label and button
@@ -45,8 +45,9 @@ public class CloseBox {
         yesButton.textProperty().bind(I18N.createStringBinding("exit"));
         yesButton.setPrefSize(55, 25);
         yesButton.setOnAction(event -> {
+//            Platform.exit();
             value = true;
-            primaryStage.close();
+            closeStage.close();
         });
         GridPane.setConstraints(yesButton, 0, 1);
 
@@ -55,7 +56,7 @@ public class CloseBox {
         noButton.setPrefSize(65, 25);
         noButton.setOnAction(event -> {
             value = false;
-            primaryStage.close();
+            closeStage.close();
         });
         GridPane.setConstraints(noButton, 1, 1);
 
@@ -67,9 +68,8 @@ public class CloseBox {
         borderPane.setStyle("-fx-background-color: #d2d2d2;");
 
 //        Scene scene = new Scene(borderPane, 295, 93);
-        Scene scene = new Scene(borderPane, 255, 93);
+        Scene scene = new Scene(borderPane, 255, 83);
         scene.getStylesheets().add("sample/css/GUI.css");
-
 
         DoubleProperty opacity = borderPane.opacityProperty();
         Timeline timeline = new Timeline(
@@ -78,11 +78,13 @@ public class CloseBox {
         );
         timeline.play();
 
-
-        primaryStage.setScene(scene);
-        primaryStage.setMaxWidth(275);
-        primaryStage.setMaxHeight(113);
-        primaryStage.showAndWait();
+        closeStage.setScene(scene);
+        closeStage.setResizable(false);
+        double x = primaryStage.getX() + (primaryStage.getWidth() - scene.getWidth()) / 2;
+        double y = primaryStage.getY() + (primaryStage.getHeight() - scene.getHeight()) / 2;
+        closeStage.setX(x);
+        closeStage.setY(y);
+        closeStage.showAndWait();
         return value;
     }
 }
