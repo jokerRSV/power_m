@@ -12,6 +12,7 @@ import javafx.scene.layout.BorderPane;
 import javafx.scene.layout.GridPane;
 import javafx.scene.layout.HBox;
 import javafx.scene.text.Text;
+import javafx.stage.Modality;
 import javafx.stage.Stage;
 import javafx.util.Duration;
 
@@ -21,7 +22,7 @@ public class CloseBox {
     public static boolean display(Stage primaryStage) {
         Stage closeStage = new Stage();
         closeStage.titleProperty().bind(I18N.createStringBinding("title.exit"));
-//        closeStage.initModality(Modality.APPLICATION_MODAL);
+        closeStage.initModality(Modality.APPLICATION_MODAL);
         closeStage.setMinWidth(150);
 
         HBox hBox = new HBox();
@@ -72,8 +73,9 @@ public class CloseBox {
         scene.getStylesheets().add("sample/css/GUI.css");
 
         DoubleProperty opacity = borderPane.opacityProperty();
+        opacity.setValue(0);
         Timeline timeline = new Timeline(
-                new KeyFrame(Duration.ZERO, new KeyValue(opacity, 0.0)),
+//                new KeyFrame(Duration.ZERO, new KeyValue(opacity, 0.0)),
                 new KeyFrame(new Duration(1000), new KeyValue(opacity, 1.0))
         );
         timeline.play();

@@ -13,8 +13,8 @@ public class Main extends Application {
         Parent root = FXMLLoader.load(getClass().getResource("sample.fxml"));
         primaryStage.titleProperty().bind(I18N.createStringBinding("title.stage", 1, 0));
         primaryStage.setScene(new Scene(root, 383, 350));
-        primaryStage.setX(1450);
-        primaryStage.setY(300);
+        primaryStage.setX(970);
+        primaryStage.setY(100);
         primaryStage.show();
 
         primaryStage.setOnCloseRequest(event -> {
@@ -29,3 +29,4 @@ public class Main extends Application {
         launch(args);
     }
 }
+
