@@ -1,0 +1,111 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+<?import java.net.URL?>
+<BorderPane prefHeight="350.0" prefWidth="383.0" xmlns="http://javafx.com/javafx/8.0.112"
+            xmlns:fx="http://javafx.com/fxml/1" fx:controller="sample.MainController">
+    <top>
+        <VBox BorderPane.alignment="CENTER">
+            <children>
+                <MenuBar VBox.vgrow="NEVER">
+                    <menus>
+                        <Menu mnemonicParsing="false" text="File">
+                            <items>
+                                <MenuItem mnemonicParsing="false" text="Open…"/>
+                                <Menu mnemonicParsing="false" text="Open Recent"/>
+                                <SeparatorMenuItem mnemonicParsing="false"/>
+                                <MenuItem mnemonicParsing="false" text="Preferences…"/>
+                            </items>
+                        </Menu>
+                        <Menu fx:id="menuOptions" mnemonicParsing="false" text="Options">
+                            <items>
+                                <Menu fx:id="menuLang" mnemonicParsing="false">
+                                    <items>
+                                        <RadioMenuItem fx:id="engItemMenu" mnemonicParsing="false">
+                                            <toggleGroup>
+                                                <ToggleGroup fx:id="toggleGroup"/>
+                                            </toggleGroup>
+                                        </RadioMenuItem>
+                                        <RadioMenuItem fx:id="rusItemMenu" mnemonicParsing="false"
+                                                       toggleGroup="$toggleGroup"/>
+                                    </items>
+                                </Menu>
+                            </items>
+                        </Menu>
+                        <Menu fx:id="menuHelp" mnemonicParsing="false" text="Help">
+                            <items>
+                                <MenuItem fx:id="menuItemAbout" mnemonicParsing="false"/>
+                            </items>
+                        </Menu>
+                    </menus>
+                </MenuBar>
+            </children>
+            <stylesheets>
+                <URL value="@css/BasicApplication.css"/>
+            </stylesheets>
+        </VBox>
+    </top>
+    <bottom>
+        <TabPane prefHeight="200.0" prefWidth="200.0" tabClosingPolicy="UNAVAILABLE" BorderPane.alignment="CENTER">
+            <tabs>
+                <Tab text="Tab1">
+                    <content>
+                        <fx:include fx:id="tab1" source="tab1.fxml"/>
+                    </content>
+                </Tab>
+                <Tab text="Tab2">
+                    <content>
+                        <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0">
+                            <children>
+                                <Button fx:id="chargeButton" layoutX="31.0" layoutY="28.0" mnemonicParsing="false"
+                                        prefHeight="25.0" prefWidth="76.0" text="Charge" textOverrun="CLIP"
+                                        AnchorPane.leftAnchor="31.0" AnchorPane.rightAnchor="276.0"
+                                        AnchorPane.topAnchor="28.0"/>
+                            </children>
+                        </AnchorPane>
+                    </content>
+                </Tab>
+                <Tab text="Main2">
+                    <content>
+                        <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0"/>
+                    </content>
+                </Tab>
+                <Tab text="Main3">
+                    <content>
+                        <!--<fx:include fx:id="Device2Controller" source="tab3.fxml"/>-->
+                        <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0"/>
+                    </content>
+                </Tab>
+                <Tab text="Main4">
+                    <content>
+                        <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0"/>
+                    </content>
+                </Tab>
+                <Tab text="Main5">
+                    <content>
+                        <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0"/>
+                    </content>
+                </Tab>
+                <Tab text="Main6">
+                    <content>
+                        <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0"/>
+                    </content>
+                </Tab>
+            </tabs>
+        </TabPane>
+    </bottom>
+    <center>
+        <AnchorPane>
+            <children>
+                <HBox fx:id="imageHBox" spacing="20.0">
+                    <!--<fx:include fx:id="device" source="device/deviceOnOff.fxml"/>-->
+                    <padding>
+                        <Insets left="10.0" top="10.0"/>
+                    </padding>
+                </HBox>
+            </children>
+        </AnchorPane>
+    </center>
+</BorderPane>

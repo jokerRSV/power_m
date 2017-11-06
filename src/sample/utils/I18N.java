@@ -1,4 +1,4 @@
-package sample;
+package sample.utils;
 
 
 import javafx.beans.binding.Bindings;

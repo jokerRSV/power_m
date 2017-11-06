@@ -1,4 +1,4 @@
-package sample;
+package sample.utils;
 
 
 public enum Exam {

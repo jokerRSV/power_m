@@ -1,4 +1,4 @@
-package sample;
+package sample.close;
 
 import javafx.animation.KeyFrame;
 import javafx.animation.KeyValue;
@@ -15,6 +15,7 @@ import javafx.scene.text.Text;
 import javafx.stage.Modality;
 import javafx.stage.Stage;
 import javafx.util.Duration;
+import sample.utils.I18N;
 
 public class CloseBox {
     private static boolean value;
@@ -68,7 +69,6 @@ public class CloseBox {
         borderPane.setCenter(gridPane);
         borderPane.setStyle("-fx-background-color: #d2d2d2;");
 
-//        Scene scene = new Scene(borderPane, 295, 93);
         Scene scene = new Scene(borderPane, 255, 83);
         scene.getStylesheets().add("sample/css/GUI.css");
 
@@ -76,7 +76,7 @@ public class CloseBox {
         opacity.setValue(0);
         Timeline timeline = new Timeline(
 //                new KeyFrame(Duration.ZERO, new KeyValue(opacity, 0.0)),
-                new KeyFrame(new Duration(1000), new KeyValue(opacity, 1.0))
+                new KeyFrame(new Duration(500), new KeyValue(opacity, 1.0))
         );
         timeline.play();
 

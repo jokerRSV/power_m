@@ -6,7 +6,7 @@ import javafx.fxml.FXML;
 
 public class Tab1Controller {
 
-    private Controller controller;
+    private MainController controller;
 
     @FXML
     private void handleButton1(ActionEvent event) {
@@ -40,7 +40,7 @@ public class Tab1Controller {
         primaryStage.showAndWait();*/
     }
 
-    public void setController(Controller controller) {
+    public void setController(MainController controller) {
         this.controller = controller;
     }
 }
