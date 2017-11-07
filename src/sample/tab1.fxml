@@ -6,6 +6,6 @@
 
 <AnchorPane fx:id="tab1" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="sample.Tab1Controller">
     <children>
-        <Button layoutX="29.0" layoutY="25.0" mnemonicParsing="false" onAction="#handleButton1" text="power1" />
+        <Button layoutX="29.0" layoutY="25.0" mnemonicParsing="false" onAction="#handleButton1" text="reload" />
     </children>
 </AnchorPane>

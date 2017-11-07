@@ -1,0 +1,8 @@
+.check-box {
+    -fx-font-size: 16;
+    -fx-border-color: lightblue;
+    -fx-border-insets: -5;
+    -fx-border-radius: 5;
+    -fx-border-style: dotted;
+    -fx-border-width: 2;
+}

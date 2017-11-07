@@ -14,9 +14,9 @@ public class Main extends Application {
     public void start(Stage primaryStage) throws Exception {
         Parent root = FXMLLoader.load(getClass().getResource("main.fxml"));
         primaryStage.titleProperty().bind(I18N.createStringBinding("title.stage", 1, 0));
-        primaryStage.setScene(new Scene(root, 383, 350));
-        primaryStage.setX(970);
-        primaryStage.setY(100);
+        primaryStage.setScene(new Scene(root, 487, 487));
+//        primaryStage.setX(970);
+//        primaryStage.setY(100);
         primaryStage.show();
 
         primaryStage.setOnCloseRequest(event -> {

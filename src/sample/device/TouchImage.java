@@ -8,10 +8,15 @@ import javafx.animation.Timeline;
 import javafx.beans.property.DoubleProperty;
 import javafx.beans.property.SimpleDoubleProperty;
 import javafx.fxml.FXMLLoader;
+import javafx.geometry.Insets;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
+import javafx.scene.effect.DropShadow;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
+import javafx.scene.input.MouseEvent;
+import javafx.scene.layout.GridPane;
+import javafx.scene.paint.Color;
 import javafx.stage.Modality;
 import javafx.stage.Stage;
 import javafx.stage.StageStyle;
@@ -21,20 +26,20 @@ import java.io.IOException;
 
 public class TouchImage extends ImageView {
     private static long count = 1;
-    private final long id = count++;
+    private final long idTouchImage = count++;
     private boolean chargeState;
     private boolean powerSupplyState1;
     private boolean powerSupplyState2;
 
     public TouchImage(FXMLLoader loader) {
         super(new Image("/images/download.png"));
-        setId(String.valueOf(id));
         setFitWidth(30);
         setFitHeight(32);
 
         Stage secondaryStage = new Stage();
-        secondaryStage.initStyle(StageStyle.UNIFIED);
-        secondaryStage.setTitle("device " + String.valueOf(this.id));
+//        secondaryStage.initStyle(StageStyle.UNIFIED);
+        secondaryStage.initStyle(StageStyle.UTILITY);
+        secondaryStage.setTitle("device " + String.valueOf(this.idTouchImage));
         secondaryStage.setResizable(false);
         Parent root = null;
         try {
@@ -61,6 +66,21 @@ public class TouchImage extends ImageView {
 
             secondaryStage.showAndWait();
         });
+    }
+
+    public static void addDevice(GridPane gridPane) {
+        FXMLLoader loader = new FXMLLoader(TouchImage.class.getResource("device.fxml"));
+        ImageView imageView = new TouchImage(loader);
+        TouchImage touchImage = (TouchImage) imageView;
+        DropShadow shadow = new DropShadow(8, 6, 6, Color.DARKSLATEGRAY);
+        imageView.addEventHandler(MouseEvent.MOUSE_ENTERED, event3 -> imageView.setEffect(shadow));
+        imageView.addEventHandler(MouseEvent.MOUSE_EXITED, event2 -> imageView.setEffect(null));
+        gridPane.add(imageView, (int) touchImage.getIdTouchImage() - 1, 0);
+        gridPane.setMargin(imageView, new Insets(0, 0, 0, 25));
+    }
+
+    public long getIdTouchImage() {
+        return idTouchImage;
     }
 
     public boolean isChargeState() {

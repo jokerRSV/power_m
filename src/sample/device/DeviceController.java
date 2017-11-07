@@ -29,5 +29,4 @@ public class DeviceController {
 //        powerSuppl1.setOnAction(event -> touchImage.setPowerSupplyState1(powerSuppl1.isSelected()));
 //        powerSuppl2.setOnAction(event -> touchImage.setPowerSupplyState2(powerSuppl2.isSelected()));
     }
-
 }
